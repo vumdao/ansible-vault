@@ -4,12 +4,12 @@
 
 - 5 steps or less to quick start with ansible vault
 
-###**1. Create password stored file to hold the master key**
+### **1. Create password stored file to hold the master key**
 ```
 ~: cat passwd_file
 pLECtontABre
 ```
-###**2. Generate encrypted password and data conent**
+### **2. Generate encrypted password and data conent**
 - Password for ssh-login
 ```
  $ ansible-vault encrypt_string --vault-id vagrant@passwd_file 'rootroot' --name vagrant
@@ -55,7 +55,7 @@ my_data_encrypted: !vault |
           31366231326330336137633035623763396533313735636531623438386632376536
 ```
 
-###**3. Create ansible task to test decryption**
+### **3. Create ansible task to test decryption**
 - test.yml: Variable `my_data_encrypted` as encrypted value
 ```
 ⚡ $ cat test.yml 
@@ -81,7 +81,7 @@ ansible_user=vagrant
 ansible_ssh_pass={{ vagrant }}
 ```
 
-###**4. Run ansible-playbook**
+### **4. Run ansible-playbook**
 ```
 ⚡ $ ansible-playbook test.yml --vault-id dev@passwd_file -i inventory -e @var.yaml
 ok: [192.168.121.107]
