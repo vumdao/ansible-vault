@@ -1,0 +1,9 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    - var.yaml
+  tasks:
+    - name: ansible vault test
+      debug:
+        msg: "{{ my_data_encrypted }}"
